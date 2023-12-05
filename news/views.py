@@ -1,6 +1,6 @@
 from news.models import Category, News
 from news.forms import CategoriesForms
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 
 
 def home(request):
@@ -9,7 +9,9 @@ def home(request):
 
 
 def news_details(request, id):
-    context = {"new": News.objects.get(id=id)}
+    obj_news = get_object_or_404(News, id=id)
+    all_categories = obj_news.categories.all()
+    context = {"new": obj_news, "categories": all_categories}
     return render(request, "news_details.html", context)
 
 
