@@ -5,5 +5,5 @@ from django.urls import path
 urlpatterns = [
     path("", home, name="home-page"),
     path("categories", categories_form, name="categories-form"),
-    path("news/<int:new_id>", news_details, name="news-details-page"),
+    path("news/<int:id>", news_details, name="news-details-page"),
 ]
