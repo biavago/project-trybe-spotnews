@@ -19,12 +19,16 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from news_rest.views.category_view import CategoryView
-from rest_framework.routers import DefaultRouter
+from news_rest.views.news_view import NewsView
 from news_rest.views.user_view import UserView
+from rest_framework.routers import DefaultRouter
+# https://www.django-rest-framework.org/api-guide/routers/
+
 
 router = DefaultRouter()
 router.register(r"api/categories", CategoryView)
 router.register(r"api/users", UserView)
+router.register(r"api/news", NewsView)
 
 
 urlpatterns = [
@@ -32,6 +36,7 @@ urlpatterns = [
     path("", include("news.urls")),
     path("", include(router.urls)),
 ]
+
 
 if settings.DEBUG:
     urlpatterns += static(
