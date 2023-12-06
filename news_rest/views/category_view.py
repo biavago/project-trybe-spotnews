@@ -1,4 +1,3 @@
-
 from news.models import Category
 from news_rest.serializers.category_serializer import CategorySerializer
 from rest_framework import viewsets
